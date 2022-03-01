@@ -2,11 +2,11 @@ import React from 'react';
 import {
     HashRouter as Router,
     Routes,
-    Route,
-    Link
+    Route
 }
     from "react-router-dom";
 import styled from "styled-components";
+import Nav from "./components/Nav";
 
 const Parent = styled.div`
     min-height: 100vh;
@@ -15,16 +15,6 @@ const Parent = styled.div`
 `
 const Rout = styled.div`
     flex-grow: 1;
-`
-const Nav = styled.div`
-    > ul{
-      display: flex;
-      li{
-        width: 33.333%;
-        text-align: center;
-      }
-    }
-
 `
 
 class App extends React.Component {
@@ -42,19 +32,7 @@ class App extends React.Component {
 
                         </Routes>
                     </Rout>
-                    <Nav>
-                        <ul>
-                            <li>
-                                <Link to="/Tab">标签页</Link>
-                            </li>
-                            <li>
-                                <Link to="/Note">笔记页</Link>
-                            </li>
-                            <li>
-                                <Link to="/Statistics">统计页</Link>
-                            </li>
-                        </ul>
-                    </Nav>
+                    <Nav/>
                 </Parent>
             </Router>
         );
