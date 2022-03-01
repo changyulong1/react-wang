@@ -1,18 +1,48 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Routes,
     Route,
     Link
 }
     from "react-router-dom";
+import styled from "styled-components";
+
+const Parent = styled.div`
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+`
+const Rout = styled.div`
+    flex-grow: 1;
+`
+const Nav = styled.div`
+    > ul{
+      display: flex;
+      li{
+        width: 33.333%;
+        text-align: center;
+      }
+    }
+
+`
 
 class App extends React.Component {
     render() {
         return (
             <Router>
-                <div>
-                    <nav>
+                <Parent>
+                    <Rout>
+                        <Routes>
+                            <Route path="/" element={<Tab/>}/>
+                            <Route path="/Tab" element={<Tab/>}/>
+                            <Route path="/Note" element={<Note/>}/>
+                            <Route path="/Statistics" element={<Statistics/>}/>
+                            <Route path="/*" element={<NoPage/>}/>
+
+                        </Routes>
+                    </Rout>
+                    <Nav>
                         <ul>
                             <li>
                                 <Link to="/Tab">标签页</Link>
@@ -24,16 +54,8 @@ class App extends React.Component {
                                 <Link to="/Statistics">统计页</Link>
                             </li>
                         </ul>
-                    </nav>
-                    <Routes>
-                        <Route path="/" element={<Tab/>}/>
-                        <Route path="/Tab" element={<Tab/>}/>
-                        <Route path="/Note" element={<Note/>}/>
-                        <Route path="/Statistics" element={<Statistics/>}/>
-                        <Route path="/*" element={<NoPage/>}/>
-
-                    </Routes>
-                </div>
+                    </Nav>
+                </Parent>
             </Router>
         );
     }
