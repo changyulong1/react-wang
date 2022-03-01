@@ -1,12 +1,7 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import React from "react";
-import  x from 'icons/money.svg'
-import b from "icons/Chart.svg"
-import c from "icons/note.svg"
-console.log(c)
-console.log(b)
-console.log(x)
+import Icon from "./Icon";
 const NavRep = styled.div`
     > ul{
       box-shadow: 0 0 3px rgba(0,0,0,0.35);
@@ -14,10 +9,14 @@ const NavRep = styled.div`
       li{
         line-height: 24px;
         width: 33.333%;
-        padding: 16px;
         display: flex;
+        padding: 4px 0;
         flex-direction: column;
         align-items: center;
+        .icon{
+          width: 24px;
+          height: 24px;
+        }
       }
     }
 `
@@ -26,21 +25,15 @@ const Nav = ()=>{
         <NavRep>
             <ul>
                 <li>
-                    <svg className="icon">
-                        <use xlinkHref="#money"/>
-                    </svg>
+                    <Icon name="note"/>
                     <Link to="/Tab">标签页</Link>
                 </li>
                 <li>
-                    <svg className="icon">
-                        <use xlinkHref="#note"/>
-                    </svg>
+                    <Icon name="money"/>
                     <Link to="/Note">笔记页</Link>
                 </li>
                 <li>
-                    <svg className="icon">
-                        <use xlinkHref="#Chart"/>
-                    </svg>
+                    <Icon name="Chart"/>
                     <Link to="/Statistics">统计页</Link>
                 </li>
             </ul>
