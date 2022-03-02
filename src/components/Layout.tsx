@@ -13,7 +13,7 @@ const Rout = styled.div`
 const Layout = (props:any)=>{
     return(
         <Parent>
-            <Rout>
+            <Rout className={props.className}>
                 {props.children}
             </Rout>
             <Nav/>

@@ -46,4 +46,10 @@ body {
 }
 button{
   font-family: $font;
+  outline: none;
+}
+.clearFix::before{
+  content: "";
+  display: block;
+  clear: both;
 }
