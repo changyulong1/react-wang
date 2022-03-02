@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import {Link} from "react-router-dom";
 import React from "react";
 import Icon from "./Icon";
+import { NavLink } from "react-router-dom";
 const NavRep = styled.div`
     > ul{
       box-shadow: 0 0 3px rgba(0,0,0,0.35);
@@ -9,13 +9,19 @@ const NavRep = styled.div`
       li{
         line-height: 24px;
         width: 33.333%;
+        a{
         display: flex;
         padding: 4px 0;
         flex-direction: column;
-        align-items: center;
-        .icon{
-          width: 24px;
-          height: 24px;
+        align-items: center; 
+          &.selected{
+            color: red;
+          }
+          .icon{
+            width: 24px;
+            height: 24px;
+            fill: red;
+          }
         }
       }
     }
@@ -25,16 +31,22 @@ const Nav = ()=>{
         <NavRep>
             <ul>
                 <li>
-                    <Icon name="note"/>
-                    <Link to="/Tab">标签页</Link>
+                    <NavLink to="/Tab" className={({ isActive }) => (isActive ? "selected" : "")}>
+                        <Icon name="note"/>
+                        标签页
+                    </NavLink>
                 </li>
                 <li>
-                    <Icon name="money"/>
-                    <Link to="/Note">笔记页</Link>
+                    <NavLink to="/Note" className={({ isActive }) => (isActive ? "selected" : "")}>
+                        <Icon name="money"/>
+                        笔记页
+                    </NavLink>
                 </li>
                 <li>
-                    <Icon name="Chart"/>
-                    <Link to="/Statistics">统计页</Link>
+                    <NavLink to="/Statistics" className={({ isActive }) => (isActive ? "selected" : "")}>
+                        <Icon name="Chart"/>
+                        统计页
+                    </NavLink>
                 </li>
             </ul>
         </NavRep>
