@@ -18,10 +18,7 @@ const Tab = () => {
 
             </Tags>
             <NotesSection>
-                <label>
-                    <span>备注</span>
-                    <input type="text" placeholder="请填写备注"/>
-                </label>
+
             </NotesSection>
             <CategorySection>
                 <ul>
