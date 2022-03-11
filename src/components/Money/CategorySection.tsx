@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import React, {useState} from "react";
 
-const CategorySection = styled.section`
+const Parent = styled.section`
   > ul {
     display: flex;
     font-size: 24px;
@@ -12,7 +13,7 @@ const CategorySection = styled.section`
       padding: 18px 0;
       position: relative;
 
-      &.selector::before {
+      &.select::before {
         content: "";
         display: block;
         width: 100%;
@@ -25,4 +26,25 @@ const CategorySection = styled.section`
   }
 `;
 
-export {CategorySection}
+const CategorySection: React.FC = () => {
+    const TypeObj = {"-": "支出", "+": '收入'};
+    const [typeLisst] = useState<('+' | '-')[]>(['-', '+']);
+    const [type, setType] = useState('-');
+    return (
+        <Parent>
+            <ul>
+                {typeLisst.map(c =>
+                    <li key={c} className={type === c ? "select" : ' '}
+                        onClick={() => {
+                            setType(c);
+                        }}
+                    >{TypeObj[c]}
+
+                    </li>)}
+
+            </ul>
+        </Parent>
+    );
+};
+
+export {CategorySection};

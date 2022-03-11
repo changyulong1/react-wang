@@ -14,18 +14,9 @@ const MyLayout = styled(Layout)`
 const Tab = () => {
     return (
         <MyLayout className="main">
-            <Tags>
-
-            </Tags>
-            <NotesSection>
-
-            </NotesSection>
-            <CategorySection>
-                <ul>
-                    <li className="selector">支出</li>
-                    <li>收入</li>
-                </ul>
-            </CategorySection>
+            <Tags/>
+            <NotesSection/>
+            <CategorySection/>
             <NumberPadSection>
                 <div className="number">
                     100
