@@ -39,9 +39,7 @@ const CategorySection: React.FC = () => {
                             setType(c);
                         }}
                     >{TypeObj[c]}
-
                     </li>)}
-
             </ul>
         </Parent>
     );
