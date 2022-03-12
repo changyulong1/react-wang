@@ -7,7 +7,6 @@ type Props = {
     onChange:(value:string)=>void
 }
 const NumberPadSection:React.FC<Props> = (Props)=>{
-    // const [number,_setNumber] = useState('0')
     const number = Props.value.toString()
     const setNumber=(nubmer:string)=>{
         let value

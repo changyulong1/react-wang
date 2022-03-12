@@ -18,44 +18,23 @@ const Tab = () => {
         category: '-' as Category,
         amount: '0'
     })
+    const onChange = (obj:Partial<typeof data>)=>{
+        setData({
+            ...data,
+            ...obj
+        })
+    }
     return (
         <MyLayout className="main">
-            {data.tags}
-            <hr/>
-            {data.note}
-            <hr/>
-            {data.category}
-            <hr/>
-            {data.amount}
-            <Tags value={data.tags} onChange={(value)=>{
-                setData({
-                    ...data,
-                    tags:value
-                })
-            }}/>
+            <Tags value={data.tags} onChange={(tags)=>onChange({tags})}/>
             <NotesSection value={data.note}
-                          onChange={(value)=>{
-                               setData({
-                                   ...data,
-                                   note:value
-                               })
-                          }}
+                          onChange={(note)=>onChange({note})}
             />
             <CategorySection value={data.category}
-                             onChange={(value)=>{
-                                    setData({
-                                        ...data,
-                                        category:value
-                                    })
-                             }}
+                             onChange={(category)=>onChange({category})}
             />
             <NumberPadSection value={data.amount}
-                              onChange={(value)=>{
-                                  setData({
-                                      ...data,
-                                      amount:value
-                                  })
-                              }}/>
+                              onChange={(amount)=>onChange({amount})}/>
         </MyLayout>
     );
 };
