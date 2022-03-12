@@ -25,18 +25,21 @@ const Parent = styled.section`
     }
   }
 `;
-
-const CategorySection: React.FC = () => {
+type Props={
+    value:string
+    onChange:(value:('-'|'+'))=>void
+}
+const CategorySection: React.FC<Props> = (Props) => {
     const TypeObj = {"-": "支出", "+": '收入'};
     const [typeLisst] = useState<('+' | '-')[]>(['-', '+']);
-    const [type, setType] = useState('-');
+    const type= Props.value
     return (
         <Parent>
             <ul>
                 {typeLisst.map(c =>
                     <li key={c} className={type === c ? "select" : ' '}
                         onClick={() => {
-                            setType(c);
+                            Props.onChange(c);
                         }}
                     >{TypeObj[c]}
                     </li>)}

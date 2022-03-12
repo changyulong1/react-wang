@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React, {ChangeEvent} from "react";
 
 const Remarks = styled.section`
   padding: 0 16px;
@@ -23,9 +23,16 @@ const Remarks = styled.section`
     }
   }
 `;
-
-const  NotesSection:React.FC =()=>{
-    const [val,setVal]=useState('')
+type Props={
+    value:string
+    onChange:(value:string)=>void
+}
+const  NotesSection:React.FC<Props> =(Props)=>{
+    const val = Props.value
+    const addText = (e:ChangeEvent)=>{
+        const taxt = (e.target as HTMLInputElement).value
+        Props.onChange(taxt)
+    }
     return(
         <Remarks>
             <label>
@@ -34,7 +41,7 @@ const  NotesSection:React.FC =()=>{
                     type="text"
                     placeholder="请填写备注"
                     value={val}
-                    onChange={(e=>setVal(e.target.value))}
+                    onChange={addText}
                 />
             </label>
         </Remarks>

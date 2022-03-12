@@ -36,10 +36,13 @@ const TagsSection = styled.section`
     margin-top: 18px;
   }
 `;
-
-const Tags: React.FC = () => {
+type Props={
+    value:string[]
+    onChange:(value:string[])=>void
+}
+const Tags: React.FC<Props> = (Props) => {
     const [tags,setTags] = useState<string[]>(['衣','食','住','行'])
-    const [tagList,settagList] = useState<string[]>([])
+    const tagList = Props.value
     const addTag=()=>{
         const tagName= window.prompt('请输入标签名')
         if(tagName!==null){
@@ -47,12 +50,12 @@ const Tags: React.FC = () => {
         }
     }
     const selectorTag= (tag:string)=>{
+        console.log(tagList)
         const index = tagList.indexOf(tag)
         if(index>=0){
-            settagList(tagList.filter(t=>t!==tag))
+            Props.onChange(tagList.filter(t=>t!==tag))
         }else{
-            console.log(index);
-            settagList([...tagList,tag])
+            Props.onChange([...tagList,tag])
         }
 
     }

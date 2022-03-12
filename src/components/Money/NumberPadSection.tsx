@@ -1,119 +1,34 @@
-import styled from "styled-components";
-import React, {useState} from "react";
+import React from "react";
+import {Parent} from "./NumberPadSection/Parents";
+import {getNumber} from "./NumberPadSection/gitNumber";
 
-const Parent = styled.section`
-  display: flex;
-  flex-direction: column;
-  > .number {
-    font-size: 36px;
-    text-align: right;
-    line-height: 72px;
-    background: #ffff;
-    padding: 0 16px;
-    box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.25);
-  }
-  > .buts {
-    > button {
-      font-size: 18px;
-      width: 25%;
-      height: 64px;
-      float: left;
-      border: none;
-
-      &.ok {
-        height: 128px;
-        float: right;
-      }
-
-      &.ling {
-        width: 50%;
-      }
-
-      &:nth-child(1) {
-        background: #F2F2F2;
-      }
-
-      &:nth-child(2),
-      &:nth-child(5) {
-        background: #E0E0E0;
-      }
-
-      &:nth-child(3),
-      &:nth-child(6),
-      &:nth-child(9) {
-        background: #D3D3D3;
-      }
-      &:nth-child(4),
-      &:nth-child(7),
-      &:nth-child(10){
-        background: #C1C1C1;
-      }
-      &:nth-child(8),
-      &:nth-child(11),
-      &:nth-child(13){
-        background: #A9A9A9;
-      }
-      &:nth-child(12){
-        background: #9A9A9A;
-      }
-      &:nth-child(14){
-        background: #8B8B8B;
-      }
-    }
-  }
-`;
-const NumberPadSection:React.FC = ()=>{
-    const [number,_setNumber] = useState('0')
+type Props = {
+    value:string
+    onChange:(value:string)=>void
+}
+const NumberPadSection:React.FC<Props> = (Props)=>{
+    // const [number,_setNumber] = useState('0')
+    const number = Props.value.toString()
     const setNumber=(nubmer:string)=>{
+        let value
         if(number.length>=16){
-            nubmer=nubmer.slice(0,16)
+            value=nubmer.slice(0,16)
         }else if(number.length===0){
-            nubmer="0"
+            value="0"
+        }else{
+            value=nubmer
         }
-        _setNumber(nubmer)
+        Props.onChange(value)
     }
     const componentText =(e:React.MouseEvent)=>{
         const text = (e.target as HTMLButtonElement).textContent
         if(text===null){return}
-        switch(text){
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-                if(number === '0'){
-                    setNumber(text)
-                }else{
-                    setNumber(number+text)
-                }
-                break
-            case '.':
-                if(number.indexOf('.')>=1){
-                    return
-                }else{
-                    setNumber(number+'.')
-                }
-                break
-            case '删除':
-               if(number.length ===1){
-                   setNumber('0')
-               }else{
-                   setNumber(number.slice(0,-1))
-               }
-                break
-            case '清空':
-                setNumber('0')
-                break
-            case 'ok':
-                console.log('ok')
-                break
+        if(text==="ok"){
+            console.log('ok')
         }
-
+        if('0123456789.'.split('').concat(['删除', '清空']).indexOf(text) >= 0){
+            setNumber(getNumber(text,number))
+        }
     }
     return(
         <Parent>
