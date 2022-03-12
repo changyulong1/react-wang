@@ -3,16 +3,20 @@ import React from "react";
 import {useTags} from "../useTags";
 import styled from "styled-components";
 import Icon from "../components/Icon";
+import {NavLink} from "react-router-dom";
 
 const  TagList = styled.ul`
   background: #ffff;
   padding-left: 10px;
-  > li{
+  > li {
     font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 8px 16px 0;
     border-bottom: 1px solid #ccc;
+    >a{
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 8px 16px 0;
+    }
+  }
 `
 const Button = styled.button`
     font-size: 18px;border: none;
@@ -33,9 +37,12 @@ const Note = ()=>{
             <TagList>
                 {tags.map(tag=>
                     <li key={tag}>
-                        <span className='oneLien'>{tag}</span>
-                        <span></span>
-                        <Icon name='left'></Icon>
+                        <NavLink to={`/Note:${tag}`}>
+                            <span className='oneLien'>{tag}</span>
+                            <span></span>
+                            <Icon name='left'></Icon>
+                        </NavLink>
+
                     </li>
                 )}
             </TagList>

@@ -9,6 +9,7 @@ import Tab from "./views/Tab";
 import Note from "./views/Note";
 import Statistics from "./views/Statistics";
 import NoPage from "./views/NoPage";
+import {Tag} from "./views/Tag";
 
 class App extends React.Component {
     render() {
@@ -18,6 +19,7 @@ class App extends React.Component {
                     <Route path="/" element={<Tab/>}/>
                     <Route path="/Tab" element={<Tab/>}/>
                     <Route path="/Note" element={<Note/>}/>
+                    <Route path="/Note:tag" element={<Tag/>}/>
                     <Route path="/Statistics" element={<Statistics/>}/>
                     <Route path="/*" element={<NoPage/>}/>
                 </Routes>
