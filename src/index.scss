@@ -53,3 +53,8 @@ button{
   display: block;
   clear: both;
 }
+.oneLien{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}

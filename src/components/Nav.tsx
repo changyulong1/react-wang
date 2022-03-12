@@ -33,13 +33,13 @@ const Nav = ()=>{
                 <li>
                     <NavLink to="/Tab" className={({ isActive }) => (isActive ? "selected" : "")}>
                         <Icon name="note"/>
-                        标签页
+                        笔记页
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/Note" className={({ isActive }) => (isActive ? "selected" : "")}>
                         <Icon name="money"/>
-                        笔记页
+                        标签页
                     </NavLink>
                 </li>
                 <li>
