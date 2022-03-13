@@ -31,12 +31,21 @@ const useTags = () => {
         gscLone.splice(index,1,{id:id,name:Obj.name})
         setTags(gscLone)
     }
+    const deleteTag = (id:number)=>{
+        const index = IndexId(id)
+        const gscLone = JSON.parse(JSON.stringify(tags))
+        gscLone.splice(index,1)
+        setTags(gscLone)
+
+    }
+
     return {
         tags,
         setTags,
         getTag,
         updateTag,
-        IndexId
+        IndexId,
+        deleteTag
     };
 };
 

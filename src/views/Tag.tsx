@@ -17,12 +17,12 @@ const TagBag = styled.header`
   background: #ffff;
 `;
 const TagName = styled.div`
-    background: #ffff;
-    margin: 8px 0;
-    padding:  0 16px;
-`
+  background: #ffff;
+  margin: 8px 0;
+  padding: 0 16px;
+`;
 const Tag: React.FC = (props) => {
-    const {getTag,updateTag} = useTags();
+    const {getTag, updateTag, deleteTag} = useTags();
     const idString = useParams().id || '';
     const tag = getTag(idString);
     return (
@@ -32,20 +32,26 @@ const Tag: React.FC = (props) => {
                 <span>编辑标签</span>
                 <span></span>
             </TagBag>
-            <TagName>
-                <Input text='标签名' type='text'
-                       placeholder='标签名'
-                       value={tag.name}
-                       onChange={(e)=>{
-                            console.log(e.target.value)
-                           updateTag(tag.id,{name:e.target.value})
-                       }
-                }
-                />
-            </TagName>
-            <Center>
-                <Button>编辑标签</Button>
-            </Center>
+            {tag? <div>
+
+                <TagName>
+                    <Input text="标签名" type="text"
+                           placeholder="标签名"
+                           value={tag.name}
+                           onChange={(e) => {
+                               console.log(e.target.value);
+                               updateTag(tag.id, {name: e.target.value});
+                           }
+                           }
+                    />
+                </TagName>
+                <Center>
+                    <Button onClick={() => {
+                        deleteTag(tag.id);
+                    }}>编辑标签</Button>
+                </Center>
+            </div>:<div>没有这个标签</div>}
+
         </Layout>
     );
 };
