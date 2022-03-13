@@ -37,7 +37,7 @@ const Note = ()=>{
             <TagList>
                 {tags.map(tag=>
                     <li key={tag.id}>
-                        <NavLink to={`/Note:${tag.name}`}>
+                        <NavLink to={`/Note`+tag.id}>
                             <span className='oneLien'>{tag.name}</span>
                             <span></span>
                             <Icon name='left'></Icon>

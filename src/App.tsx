@@ -19,7 +19,7 @@ class App extends React.Component {
                     <Route path="/" element={<Tab/>}/>
                     <Route path="/Tab" element={<Tab/>}/>
                     <Route path="/Note" element={<Note/>}/>
-                    <Route path="/Note:tag" element={<Tag/>}/>
+                    <Route path="/Note:id" element={<Tag/>}/>
                     <Route path="/Statistics" element={<Statistics/>}/>
                     <Route path="/*" element={<NoPage/>}/>
                 </Routes>
