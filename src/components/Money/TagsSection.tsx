@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React from "react";
+import {useTags} from "../../useTags";
+import {TagId} from "../../lib/tagId";
 
 
 const TagsSection = styled.section`
@@ -41,16 +43,15 @@ type Props={
     onChange:(value:string[])=>void
 }
 const Tags: React.FC<Props> = (Props) => {
-    const [tags,setTags] = useState<string[]>(['衣','食','住','行'])
+    const {tags,setTags} = useTags()
     const tagList = Props.value
     const addTag=()=>{
         const tagName= window.prompt('请输入标签名')
         if(tagName!==null){
-            setTags([...tags,tagName])
+            setTags([...tags,{id:TagId(),name:tagName}])
         }
     }
     const selectorTag= (tag:string)=>{
-        console.log(tagList)
         const index = tagList.indexOf(tag)
         if(index>=0){
             Props.onChange(tagList.filter(t=>t!==tag))
@@ -64,8 +65,8 @@ const Tags: React.FC<Props> = (Props) => {
         <TagsSection>
             <ol>
                 {tags.map((tag=>{
-                   return <li key={tag}
-                   onClick={()=>{selectorTag(tag)}} className={getClass(tag)}>{tag}</li>
+                   return <li key={tag.id}
+                   onClick={()=>{selectorTag(tag.name)}} className={getClass(tag.name)}>{tag.name}</li>
                 }))}
             </ol>
             <button onClick={addTag}>新增标签</button>

@@ -31,14 +31,14 @@ const Center =styled.div`
     margin-top: 44px;
 `
 const Note = ()=>{
-    const {tags,setTags}=useTags()
+    const {tags}=useTags()
     return(
         <Layout>
             <TagList>
                 {tags.map(tag=>
-                    <li key={tag}>
-                        <NavLink to={`/Note:${tag}`}>
-                            <span className='oneLien'>{tag}</span>
+                    <li key={tag.id}>
+                        <NavLink to={`/Note:${tag.name}`}>
+                            <span className='oneLien'>{tag.name}</span>
                             <span></span>
                             <Icon name='left'></Icon>
                         </NavLink>
