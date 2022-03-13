@@ -8,11 +8,10 @@ const Label = styled.label`
       margin-right: 16px;
       white-space: nowrap;
     }
-
     > input {
       background: none;
       border: none;
-      height: 73px;
+      height: 44px;
       width: 100%;
       outline: none;
     }

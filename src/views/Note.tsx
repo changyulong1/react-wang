@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Icon from "../components/Icon";
 import {NavLink} from "react-router-dom";
 import {Button} from "../components/Button";
+import {Center} from "../components/Center";
 
 const  TagList = styled.ul`
   background: #ffff;
@@ -19,13 +20,7 @@ const  TagList = styled.ul`
     }
   }
 `
-const Center =styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 44px;
-`
+
 const Note = ()=>{
     const {tags}=useTags()
     return(

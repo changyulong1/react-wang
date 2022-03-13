@@ -24,8 +24,7 @@ const  NotesSection:React.FC<Props> =(Props)=>{
                    placeholder='请输入备注'
                    value={val}
                    onChange={addText}
-            >
-            </Input>
+            />
         </Remarks>
     )
 }
