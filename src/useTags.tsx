@@ -14,10 +14,29 @@ const useTags = () => {
         const tag = tags.filter(tag => tag.id.toString() === id)[0]
         return tag
     }
+    const IndexId = (id:number)=>{
+        let rest = -1
+        for(let i =0;i<=tags.length;i++){
+            if(tags[i].id === id){
+                rest = i
+                break
+            }
+        }
+
+        return rest
+    }
+    const updateTag = (id:number,Obj:{name:string})=>{
+        const index = IndexId(id)
+        const gscLone = JSON.parse(JSON.stringify(tags))
+        gscLone.splice(index,1,{id:id,name:Obj.name})
+        setTags(gscLone)
+    }
     return {
         tags,
         setTags,
-        getTag
+        getTag,
+        updateTag,
+        IndexId
     };
 };
 

@@ -21,11 +21,10 @@ const TagName = styled.div`
     margin: 8px 0;
     padding:  0 16px;
 `
-
 const Tag: React.FC = (props) => {
-    const {getTag} = useTags();
-    const id = useParams().id || '';
-    const tag = getTag(id);
+    const {getTag,updateTag} = useTags();
+    const idString = useParams().id || '';
+    const tag = getTag(idString);
     return (
         <Layout>
             <TagBag>
@@ -34,7 +33,15 @@ const Tag: React.FC = (props) => {
                 <span></span>
             </TagBag>
             <TagName>
-                <Input text='标签名' type='text' placeholder={tag.name}/>
+                <Input text='标签名' type='text'
+                       placeholder='标签名'
+                       value={tag.name}
+                       onChange={(e)=>{
+                            console.log(e.target.value)
+                           updateTag(tag.id,{name:e.target.value})
+                       }
+                }
+                />
             </TagName>
             <Center>
                 <Button>编辑标签</Button>
