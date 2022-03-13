@@ -4,6 +4,7 @@ import {useTags} from "../useTags";
 import styled from "styled-components";
 import Icon from "../components/Icon";
 import {NavLink} from "react-router-dom";
+import {Button} from "../components/Button";
 
 const  TagList = styled.ul`
   background: #ffff;
@@ -17,11 +18,6 @@ const  TagList = styled.ul`
       padding: 8px 8px 16px 0;
     }
   }
-`
-const Button = styled.button`
-    font-size: 18px;border: none;
-    padding: 9px 8px;background: #767676;
-    color: #ffff;
 `
 const Center =styled.div`
     display: flex;
