@@ -22,12 +22,12 @@ const NumberPadSection:React.FC<Props> = (Props)=>{
     const componentText =(e:React.MouseEvent)=>{
         const text = (e.target as HTMLButtonElement).textContent
         if(text===null){return}
-        if(text==="ok"){
-            console.log('ok')
-        }
         if('0123456789.'.split('').concat(['删除', '清空']).indexOf(text) >= 0){
             setNumber(getNumber(text,number))
         }
+    }
+    const dataList = ()=>{
+        console.log(666)
     }
     return(
         <Parent>
@@ -46,7 +46,7 @@ const NumberPadSection:React.FC<Props> = (Props)=>{
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-                <button className="ok">ok</button>
+                <button className="ok" onClick={dataList}>ok</button>
                 <button className="ling">0</button>
                 <button className="spot">.</button>
             </div>

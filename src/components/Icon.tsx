@@ -5,10 +5,12 @@ try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {consol
 
 type Props ={
     name: string
+    onClick?:()=>void
 }
-const Icon = (props:Props) =>{
+const Icon:React.FC<Props> = (props) =>{
+    const {onClick} = props
     return(
-        <svg className="icon">
+        <svg className="icon" onClick={onClick}>
             <use xlinkHref={"#"+props.name}/>
         </svg>
     )

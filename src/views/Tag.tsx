@@ -25,10 +25,13 @@ const Tag: React.FC = (props) => {
     const {getTag, updateTag, deleteTag} = useTags();
     const idString = useParams().id || '';
     const tag = getTag(idString);
+    const toLind = ()=>{
+        window.open('#/Note')
+    }
     return (
         <Layout>
             <TagBag>
-                <Icon name="right"/>
+                <Icon name="right" onClick={toLind}/>
                 <span>编辑标签</span>
                 <span></span>
             </TagBag>
@@ -39,19 +42,15 @@ const Tag: React.FC = (props) => {
                            placeholder="标签名"
                            value={tag.name}
                            onChange={(e) => {
-                               console.log(e.target.value);
                                updateTag(tag.id, {name: e.target.value});
                            }
                            }
                     />
                 </TagName>
                 <Center>
-                    <Button onClick={() => {
-                        deleteTag(tag.id);
-                    }}>编辑标签</Button>
+                    <Button onClick={() =>deleteTag(tag.id)}>删除标签</Button>
                 </Center>
             </div>:<div>没有这个标签</div>}
-
         </Layout>
     );
 };

@@ -22,7 +22,7 @@ const  TagList = styled.ul`
 `
 
 const Note = ()=>{
-    const {tags}=useTags()
+    const {tags,addTag}=useTags()
     return(
         <Layout>
             <TagList>
@@ -38,7 +38,7 @@ const Note = ()=>{
                 )}
             </TagList>
             <Center>
-                <Button>添加标签</Button>
+                <Button onClick={()=>addTag()}>添加标签</Button>
             </Center>
         </Layout>
     )

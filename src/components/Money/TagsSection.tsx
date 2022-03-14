@@ -43,14 +43,8 @@ type Props={
     onChange:(value:string[])=>void
 }
 const Tags: React.FC<Props> = (Props) => {
-    const {tags,setTags} = useTags()
+    const {tags,addTag} = useTags()
     const tagList = Props.value
-    const addTag=()=>{
-        const tagName= window.prompt('请输入标签名')
-        if(tagName!==null){
-            setTags([...tags,{id:TagId(),name:tagName}])
-        }
-    }
     const selectorTag= (tag:string)=>{
         const index = tagList.indexOf(tag)
         if(index>=0){
@@ -69,7 +63,7 @@ const Tags: React.FC<Props> = (Props) => {
                    onClick={()=>{selectorTag(tag.name)}} className={getClass(tag.name)}>{tag.name}</li>
                 }))}
             </ol>
-            <button onClick={addTag}>新增标签</button>
+            <button onClick={()=>addTag()}>新增标签</button>
         </TagsSection>
     );
 };

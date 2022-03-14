@@ -1,19 +1,24 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {TagId} from "./lib/tagId";
 
-const usrTagId = [
-    {id: TagId(), name: '衣'},
-    {id: TagId(), name: '食'},
-    {id: TagId(), name: '住'},
-    {id: TagId(), name: '行'}
-];
-
 const useTags = () => {
-    const [tags, setTags] = useState<{ id: number, name: string }[]>(usrTagId);
-    const getTag = (id:string) =>{
-        const tag = tags.filter(tag => tag.id.toString() === id)[0]
-        return tag
-    }
+    const [tags, setTags] = useState<{ id: number, name: string }[]>([]);
+    const getTag = (id:string) =>{return tags.filter(tag => tag.id.toString() === id)[0]}
+    useEffect(()=>{
+        let TagData = JSON.parse(window.localStorage.getItem('tags')||'[]')
+        if(TagData.length===0){
+            TagData = [
+                {id: TagId(), name: '衣'},
+                {id: TagId(), name: '食'},
+                {id: TagId(), name: '住'},
+                {id: TagId(), name: '行'}
+            ]
+        }
+        setTags(TagData)
+    },[])
+    useEffect(()=>{
+        window.localStorage.setItem("tags",JSON.stringify(tags))
+    },[tags])
     const IndexId = (id:number)=>{
         let rest = -1
         for(let i =0;i<=tags.length;i++){
@@ -22,30 +27,28 @@ const useTags = () => {
                 break
             }
         }
-
         return rest
     }
     const updateTag = (id:number,Obj:{name:string})=>{
-        const index = IndexId(id)
-        const gscLone = JSON.parse(JSON.stringify(tags))
-        gscLone.splice(index,1,{id:id,name:Obj.name})
-        setTags(gscLone)
+        setTags(tags.map(tag => tag.id === id ? {id, name: Obj.name} : tag))
     }
     const deleteTag = (id:number)=>{
-        const index = IndexId(id)
-        const gscLone = JSON.parse(JSON.stringify(tags))
-        gscLone.splice(index,1)
-        setTags(gscLone)
-
+        setTags(tags.filter(tag=> tag.id!==id))
     }
-
+    const addTag=()=>{
+        const tagName= window.prompt('请输入标签名')
+        if(tagName!==null){
+            setTags([...tags,{id:TagId(),name:tagName}])
+        }
+    }
     return {
         tags,
         setTags,
         getTag,
         updateTag,
         IndexId,
-        deleteTag
+        deleteTag,
+        addTag
     };
 };
 
