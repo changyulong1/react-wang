@@ -2,6 +2,7 @@
   "name": "wangcai",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://changyulong1.github.io/jizhang1",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
