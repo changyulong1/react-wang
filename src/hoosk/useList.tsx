@@ -22,14 +22,14 @@ const useList =()=>{
         window.localStorage.setItem('DataList',JSON.stringify(datalist))
     },[datalist])
     const addList = (arr:nowListData)=>{
-        // if(arr.tags.length ==0){
-        //     alert('请选标签')
-        //     return
-        // }
-        // if(arr.amount =='0'){
-        //     alert('请填写金额')
-        //     return
-        // }
+        if(arr.tags.length ===0){
+            alert('请选标签')
+            return
+        }
+        if(arr.amount ==='0'){
+            alert('请填写金额')
+            return
+        }
 
         const data ={...arr,'day':new Date().toISOString()}
         setList([...datalist,data])
