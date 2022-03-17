@@ -8,7 +8,6 @@ const Parent = styled.section`
 
     > li {
       width: 50%;
-      background: #C4C4C4;
       text-align: center;
       padding: 18px 0;
       position: relative;
@@ -26,7 +25,7 @@ const Parent = styled.section`
   }
 `;
 type Props={
-    value:string
+    value?:string
     onChange:(value:('-'|'+'))=>void
 }
 const CategorySection: React.FC<Props> = (Props) => {

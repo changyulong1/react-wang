@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
-import {TagId} from "./lib/tagId";
+import {TagId} from "../lib/tagId";
+import {useUpdata} from "./useUpdata";
 
 const useTags = () => {
     const [tags, setTags] = useState<{ id: number, name: string }[]>([]);
@@ -16,7 +17,8 @@ const useTags = () => {
         }
         setTags(TagData)
     },[])
-    useEffect(()=>{
+    useUpdata(()=>{
+        console.log(1)
         window.localStorage.setItem("tags",JSON.stringify(tags))
     },[tags])
     const IndexId = (id:number)=>{
@@ -41,6 +43,10 @@ const useTags = () => {
             setTags([...tags,{id:TagId(),name:tagName}])
         }
     }
+    const  getName = (id:string)=>{
+        const tag = tags.filter(d=>d.id === parseInt(id))[0]
+        return tag?tag.name:' '
+    }
     return {
         tags,
         setTags,
@@ -48,7 +54,8 @@ const useTags = () => {
         updateTag,
         IndexId,
         deleteTag,
-        addTag
+        addTag,
+        getName
     };
 };
 

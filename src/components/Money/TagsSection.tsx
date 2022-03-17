@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import {useTags} from "../../useTags";
-import {TagId} from "../../lib/tagId";
+import {useTags} from "../../hoosk/useTags";
 
 
 const TagsSection = styled.section`
@@ -45,12 +44,12 @@ type Props={
 const Tags: React.FC<Props> = (Props) => {
     const {tags,addTag} = useTags()
     const tagList = Props.value
-    const selectorTag= (tag:string)=>{
-        const index = tagList.indexOf(tag)
+    const selectorTag= (tagId:string)=>{
+        const index = tagList.indexOf(tagId)
         if(index>=0){
-            Props.onChange(tagList.filter(t=>t!==tag))
+            Props.onChange(tagList.filter(t=>t!==tagId))
         }else{
-            Props.onChange([...tagList,tag])
+            Props.onChange([...tagList,tagId])
         }
 
     }
@@ -60,7 +59,7 @@ const Tags: React.FC<Props> = (Props) => {
             <ol>
                 {tags.map((tag=>{
                    return <li key={tag.id}
-                   onClick={()=>{selectorTag(tag.name)}} className={getClass(tag.name)}>{tag.name}</li>
+                   onClick={()=>{selectorTag(tag.id.toString())}} className={getClass(tag.id.toString())}>{tag.name}</li>
                 }))}
             </ol>
             <button onClick={()=>addTag()}>新增标签</button>

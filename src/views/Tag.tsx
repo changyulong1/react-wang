@@ -1,12 +1,12 @@
 import React from "react";
-import {useTags} from "../useTags";
+import {useTags} from "hoosk/useTags";
 import {useParams} from "react-router-dom";
-import Layout from "../components/Layout";
-import {Button} from "../components/Button";
-import Icon from "../components/Icon";
+import Layout from "components/Layout";
+import {Button} from "components/Button";
+import Icon from "components/Icon";
 import styled from "styled-components";
-import {Input} from "../components/Input";
-import {Center} from "../components/Center";
+import {Input} from "components/Input";
+import {Center} from "components/Center";
 
 const TagBag = styled.header`
   display: flex;

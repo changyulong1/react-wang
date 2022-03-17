@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import React from "react";
-import {useTags} from "../useTags";
+import {useTags} from "../hoosk/useTags";
 import styled from "styled-components";
 import Icon from "../components/Icon";
 import {NavLink} from "react-router-dom";

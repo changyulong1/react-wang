@@ -10,6 +10,9 @@ const MyLayout = styled(Layout)`
     display: flex;
   flex-direction: column;
 `
+const Wrap = styled.div`
+  background: #C4C4C4;
+`
 type Category = '-' | '+'
 const Tab = () => {
     const [data,setData] = useState({
@@ -30,10 +33,13 @@ const Tab = () => {
             <NotesSection value={data.note}
                           onChange={(note)=>onChange({note})}
             />
-            <CategorySection value={data.category}
-                             onChange={(category)=>onChange({category})}
-            />
+            <Wrap>
+                <CategorySection value={data.category}
+                                 onChange={(category)=>onChange({category})}
+                />
+            </Wrap>
             <NumberPadSection value={data.amount}
+                              arr={data}
                               onChange={(amount)=>onChange({amount})}/>
         </MyLayout>
     );

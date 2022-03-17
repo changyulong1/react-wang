@@ -1,12 +1,15 @@
 import React from "react";
 import {Parent} from "./NumberPadSection/Parents";
 import {getNumber} from "./NumberPadSection/gitNumber";
+import { nowListData, useList} from "../../hoosk/useList";
 
 type Props = {
     value:string
     onChange:(value:string)=>void
+    arr: nowListData
 }
 const NumberPadSection:React.FC<Props> = (Props)=>{
+    const {addList} = useList()
     const number = Props.value.toString()
     const setNumber=(nubmer:string)=>{
         let value
@@ -26,9 +29,6 @@ const NumberPadSection:React.FC<Props> = (Props)=>{
             setNumber(getNumber(text,number))
         }
     }
-    const dataList = ()=>{
-        console.log(666)
-    }
     return(
         <Parent>
             <div className="number">
@@ -46,7 +46,7 @@ const NumberPadSection:React.FC<Props> = (Props)=>{
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-                <button className="ok" onClick={dataList}>ok</button>
+                <button className="ok" onClick={()=>addList(Props.arr)}>ok</button>
                 <button className="ling">0</button>
                 <button className="spot">.</button>
             </div>
