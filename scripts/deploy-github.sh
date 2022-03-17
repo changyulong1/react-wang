@@ -3,7 +3,7 @@ yarn build &&
 cd build &&
 git init &&
 git  add . &&
-git comiit -m '更新' &&
+git commit -m 'geng' &&
 git remote add origin git@github.com:changyulong1/jizhang1.git &&
-git push -u origin master -f
-cd ..
+git push -u origin master -f  &&
+cd -
