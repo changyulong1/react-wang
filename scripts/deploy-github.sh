@@ -4,6 +4,6 @@ cd build &&
 git init &&
 git  add . &&
 git commit -m 'geng' &&
-git remote add origin git@github.com:changyulong1/jizhang1.git &&
+git remote add origin git@gitee.com:xiaocao2019/react-wang.git &&
 git push -u origin master -f  &&
 cd -
